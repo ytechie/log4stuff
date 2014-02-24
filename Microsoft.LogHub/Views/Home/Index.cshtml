@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="container" style="font-size: 9pt;">
+    <table class="table table-condensed table-hover" id="logTable" style="font-size: 8pt">
+        <thead>
+            <tr>
+                <td>Timestamp</td>
+                <td>Level</td>
+                <td>Logger</td>
+                <td>Thread</td>
+                <td>Message</td>
+                <td>Host Name</td>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.0.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Content/logview.js"></script>  
+    
+}
