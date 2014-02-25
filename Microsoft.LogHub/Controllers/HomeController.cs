@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Net;
+using System.Web.Mvc;
+using Microsoft.Owin.BuilderProperties;
+using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace Microsoft.LogHub.Controllers
 {
@@ -11,7 +15,21 @@ namespace Microsoft.LogHub.Controllers
 
         public ActionResult About()
         {
-            ViewBag.IpAddress = Request.ServerVariables.Get("LOCAL_ADDR");
+            var ip = "ENTER_WEBSITE_IP";
+            if (RoleEnvironment.IsAvailable)
+            {
+                if (Request.Url != null)
+                {
+                    var addresses = Dns.GetHostAddresses(Request.Url.DnsSafeHost);
+                    if (addresses.Length > 0)
+                        ip = addresses[0].ToString();
+                }
+            }
+            else
+            {
+                ip = Request.ServerVariables.Get("LOCAL_ADDR");
+            }
+            ViewBag.IpAddress = ip;
             return View();
         }
     }
