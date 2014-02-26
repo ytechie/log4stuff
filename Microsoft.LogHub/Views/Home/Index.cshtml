@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div id="container" style="font-size: 9pt;">
+<div id="container" style="font-size: 9pt;" ng-app="logView" ng-controller="LogController">
     <table class="table table-condensed table-hover" id="logTable" style="font-size: 8pt">
         <thead>
             <tr>
@@ -14,12 +14,23 @@
                 <td>Host Name</td>
             </tr>
         </thead>
+        <tbody ng-repeat="log in logMessages">
+            <tr>
+                <td>{{ log.timestamp | date:'short' }}</td>
+                <td>{{ log.level }}</td>
+                <td>{{ log.logger }}</td>
+                <td>{{ log.thread }}</td>
+                <td>{{ log.message }}</td>
+                <td>{{ log.hostName }}</td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
 @section scripts {
     <script src="~/Scripts/jquery.signalR-2.0.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/angular.min.js"></script>  
     <script src="~/Content/logview.js"></script>  
     
 }

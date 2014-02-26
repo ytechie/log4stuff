@@ -1,23 +1,28 @@
-﻿var logHub = $.connection.logMessageHub;
-var log;
+﻿/*global $, angular, console */
+(function(){
+    'use strict';
 
-function ticksToTimestamp(ticks) {
-    var d = new Date();
-    d.setTime(ticks);
-    return d;
-}
+    var app = angular.module('logView', []);
 
-logHub.client.newLogMessage = function (logMessage) {
-    log = JSON.parse(logMessage).event;
-    $("#logTable tr:last").after(
-        '<tr>' +
-        '<td>' + ticksToTimestamp(log['@timestamp']) + '</td>' +
-        '<td>' + log['@level'] + '</td>' +
-        '<td>' + log['@logger'] + '</td>' +
-        '<td>' + log['@thread'] + '</td>' +
-        '<td>' + log.message + '</td>' +
-        '<td>' + log.properties.data[0]['@value'] + '</td>' +
-        '</tr>');
-};
+    app.controller('LogController', function($scope) {
+        $scope.logMessages = [];
 
-$.connection.hub.start();
+        var logHub = $.connection.logMessageHub;
+        logHub.client.newLogMessage = function(logMessage) {
+            var log = JSON.parse(logMessage).event;
+
+            $scope.logMessages.push({
+                timestamp: new Date(),
+                level: log['@level'],
+                logger: log['@logger'],
+                thread: log['@thread'],
+                message: log.message,
+                hostName: log.properties.data[0]['@value']
+            });
+            $scope.$apply();
+        };
+    
+        $.connection.hub.start();
+        console.log('SignalR Hub Connection Opened');
+    });
+})();
