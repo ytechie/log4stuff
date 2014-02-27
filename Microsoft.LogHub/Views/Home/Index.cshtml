@@ -6,6 +6,14 @@
     <table class="table table-condensed table-hover" id="logTable" style="font-size: 8pt">
         <thead>
             <tr>
+                <td>Filters:</td>
+                <td><input ng-model="search.level"></td>
+                <td><input ng-model="search.logger"></td>
+                <td><input ng-model="search.thread"></td>
+                <td><input ng-model="search.message"></td>
+                <td><input ng-model="search.hostName"></td>
+            </tr>
+            <tr>
                 <td>Timestamp</td>
                 <td>Level</td>
                 <td>Logger</td>
@@ -14,7 +22,7 @@
                 <td>Host Name</td>
             </tr>
         </thead>
-        <tbody ng-repeat="log in logMessages">
+        <tbody ng-repeat="log in logMessages | filter:search:'true'">
             <tr>
                 <td>{{ log.timestamp | date:'short' }}</td>
                 <td>{{ log.level }}</td>
@@ -30,7 +38,6 @@
 @section scripts {
     <script src="~/Scripts/jquery.signalR-2.0.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
-    <script src="~/Scripts/angular.min.js"></script>  
     <script src="~/Content/logview.js"></script>  
     
 }
