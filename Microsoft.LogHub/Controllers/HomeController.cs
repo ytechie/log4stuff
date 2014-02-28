@@ -9,8 +9,9 @@ namespace Microsoft.LogHub.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
+            ViewBag.ApplicationId = id;
             return View();
         }
 

@@ -2,9 +2,9 @@
 (function(){
     'use strict';
 
-    var app = angular.module('logView', []);
+    var app = angular.module('logView', ['ngRoute']);
 
-    app.controller('LogController', function($scope) {
+    app.controller('LogController', function ($scope, $window) {
         $scope.logMessages = [];
         $scope.maxMessages = 1000;
 
@@ -53,5 +53,10 @@
                 console.error('Could not connect to the SignalR hub :-(');
             });
         };
+        
+        if ($window.applicationId) {
+            $scope.applicationId = $window.applicationId;
+            $scope.subscribe();
+        }
     });
 })();
