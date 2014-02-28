@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Microsoft.Owin.BuilderProperties;
@@ -30,6 +31,7 @@ namespace Microsoft.LogHub.Controllers
                 ip = Request.ServerVariables.Get("LOCAL_ADDR");
             }
             ViewBag.IpAddress = ip;
+            ViewBag.NewGuid = Guid.NewGuid().ToString();
             return View();
         }
     }
