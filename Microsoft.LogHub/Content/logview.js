@@ -6,6 +6,7 @@
 
     app.controller('LogController', function($scope) {
         $scope.logMessages = [];
+        $scope.maxMessages = 1000;
 
         $scope.subscribe = function () {
             if (!$scope.applicationId) {
@@ -21,15 +22,26 @@
 
             logHub.client.newLogMessage = function(logMessage) {
                 var log = JSON.parse(logMessage).event;
+                var hostName;
 
+                for (var i = 0; i < log.properties.data.length; i++) {
+                    if (log.properties.data[i]['@name'] == 'log4net:HostName') {
+                        hostName = log.properties.data[i]['@value'];
+                    }
+                }
                 $scope.logMessages.push({
                     timestamp: new Date(),
                     level: log['@level'],
                     logger: log['@logger'],
                     thread: log['@thread'],
                     message: log.message,
-                    hostName: log.properties.data[0]['@value']
+                    hostName: hostName
                 });
+                
+                if ($scope.logMessages.length > $scope.maxMessages) {
+                    $scope.logMessages.shift();
+                }
+
                 $scope.$apply();
             };
 
