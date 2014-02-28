@@ -19,5 +19,18 @@ namespace Microsoft.LogHub
 
             Assert.IsTrue(json.Length > 0);
         }
+
+        [TestMethod]
+        public void GetApplicationIdFromSampleXml()
+        {
+            var embeddedStream =
+                Assembly.GetExecutingAssembly()
+                    .GetManifestResourceStream(typeof(UnitTest1).Namespace + "." + "SampleLog4jXml.txt");
+
+            var xml = new StreamReader(embeddedStream).ReadToEnd();
+            var applicationId = MvcApplication.GetApplicationId(xml);
+
+            Assert.AreEqual("sample-app-id", applicationId);
+        }
     }
 }
