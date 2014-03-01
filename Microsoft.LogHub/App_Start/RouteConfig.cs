@@ -16,7 +16,7 @@ namespace Microsoft.LogHub
             routes.MapRoute(
                 name: "AppsShortcut",
                 url: "app/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Apps", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

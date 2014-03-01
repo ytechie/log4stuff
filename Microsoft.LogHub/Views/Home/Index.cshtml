@@ -1,50 +1,53 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Log4Stuff";
 }
 
-<div id="container" style="font-size: 9pt;" ng-app="logView" ng-controller="LogController">
-    <form ng-submit="subscribe()">
-        ApplicationId: <input ng-model="applicationId">
-        <input type="submit" value="Listen">
-    </form>
+<div class="container">
+    <img src="/Content/log4stuff.png" style="width: 250px; padding-bottom: 20px;" class="img-responsive center-block" />
 
-    <table class="table table-condensed table-hover" id="logTable" style="font-size: 8pt">
-        <thead>
-            <tr>
-                <td>Filters:</td>
-                <td><input ng-model="search.level"></td>
-                <td><input ng-model="search.logger"></td>
-                <td><input ng-model="search.thread"></td>
-                <td><input ng-model="search.message"></td>
-                <td><input ng-model="search.hostName"></td>
-            </tr>
-            <tr>
-                <td>Timestamp</td>
-                <td>Level</td>
-                <td>Logger</td>
-                <td>Thread</td>
-                <td>Message</td>
-                <td>Host Name</td>
-            </tr>
-        </thead>
-        <tbody ng-repeat="log in logMessages | filter:search:'true'">
-            <tr>
-                <td>{{ log.timestamp | date:'short' }}</td>
-                <td>{{ log.level }}</td>
-                <td>{{ log.logger }}</td>
-                <td>{{ log.thread }}</td>
-                <td>{{ log.message }}</td>
-                <td>{{ log.hostName }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row" style="padding-bottom: 60px">
+        <div class="col-md-4 text-center">
+            <img src="/Content/appender-screenshot.jpg"/>
+            Add a UDP Appender to log4net or log4j
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="/Content/appender-applicationid.jpg" />
+            Add 1 line of code
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="/Content/log-output.jpg" />
+            View your logs online, in real time
+        </div>
+    </div>
+    
+    <div class="row" style="padding-bottom: 40px;">
+        <div class="col-md-4">
+            <h3>No sign-up needed</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>We don't store your log messages</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>Built on <a href="http://logging.apache.org/log4net/">log4net</a> and <a href="http://signalr.net/">signalr</a></h3>
+        </div>
+    </div>
+    
+    <div class="row" style="padding-bottom: 60px">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+                <p class="lead">
+                    Getting started takes seconds. Create an application ID that will identify your application. We've already
+                    generated one for you if you want to use it.
+                </p>
+            <p class="center-block">
+                @using (Html.BeginForm("GetTheCode", "Home", FormMethod.Get, new { @class = "form-inline", role="form" }))
+                {
+                    @Html.TextBox("id", (string)ViewBag.NewGuid, new {@class = "form-control"})
+                    <input type="submit" value="Get the Code" class="btn btn-default" />
+                }
+            </p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    
 </div>
-
-@section scripts {
-    <script src="~/Scripts/jquery.signalR-2.0.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script>
-        window.applicationId = '@ViewBag.ApplicationId';
-    </script>
-    <script src="~/Content/logview.js"></script>
-}

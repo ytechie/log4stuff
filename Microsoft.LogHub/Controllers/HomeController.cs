@@ -9,31 +9,22 @@ namespace Microsoft.LogHub.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string id)
+        public ActionResult Index()
         {
-            ViewBag.ApplicationId = id;
+            ViewBag.NewGuid = Guid.NewGuid().ToString();
+
             return View();
         }
 
         public ActionResult About()
         {
-            var ip = "ENTER_WEBSITE_IP";
-            if (RoleEnvironment.IsAvailable)
-            {
-                if (Request.Url != null)
-                {
-                    var addresses = Dns.GetHostAddresses(Request.Url.DnsSafeHost);
-                    if (addresses.Length > 0)
-                        ip = addresses[0].ToString();
-                }
-            }
-            else
-            {
-                ip = Request.ServerVariables.Get("LOCAL_ADDR");
-            }
-            ViewBag.IpAddress = ip;
-            ViewBag.NewGuid = Guid.NewGuid().ToString();
             return View();
+
+        }
+
+        public ActionResult GetTheCode(string id)
+        {
+            return RedirectToAction("Configure", "Apps", new { id = id });
         }
     }
 }
