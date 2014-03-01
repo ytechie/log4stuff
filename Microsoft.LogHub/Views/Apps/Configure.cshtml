@@ -4,19 +4,25 @@
     ViewBag.Title = "Configure";
 }
 
-<ol>
-    <li>
-        Add the following appender to your logging configuration:<br />
-        <pre>
+<div class="container body-content">
+    <ol>
+        <li>
+            Add the following appender to your logging configuration:<br />
+            <pre>
 &lt;appender name=&quot;UdpAppender&quot; type=&quot;log4net.Appender.UdpAppender&quot;&gt;
     &lt;param name=&quot;RemoteAddress&quot; value=&quot;@ViewBag.IpAddress&quot; /&gt;
     &lt;param name=&quot;RemotePort&quot; value=&quot;8080&quot; /&gt;
     &lt;layout type=&quot;log4net.Layout.XmlLayoutSchemaLog4j, log4net&quot; /&gt;
 &lt;/appender&gt;</pre>
-    </li>
-    <li>
-        In your code, create a unique ID for your application. Any string will work. GUIDs are fine. Here is one for free!<br />
-        <pre>log4net.GlobalContext.Properties["ApplicationId"] = "@ViewBag.NewGuid";</pre>
-    </li>
-    <li>View your log messages in real time on the @Html.ActionLink("here!", "Index", "Apps"). Bookmark that page to save time next time!</li>
-</ol>
+        </li>
+        <li>
+            In your code, create a unique ID for your application. Any string will work. GUIDs are fine. Here is one for free!<br />
+            <pre>log4net.GlobalContext.Properties["ApplicationId"] = "@ViewBag.NewGuid";</pre>
+        </li>
+        <li>View your log messages in real time on the @Html.ActionLink("here!", "Index", "Apps"). Bookmark that page to save time next time!</li>
+        <p>
+            Alternatively, scan this QR code to view your logs:<br />
+            <img src="@ViewBag.QrCodeUrl" />
+        </p>
+    </ol>
+</div>
