@@ -14,9 +14,18 @@
     &lt;param name=&quot;RemotePort&quot; value=&quot;8080&quot; /&gt;
     &lt;layout type=&quot;log4net.Layout.XmlLayoutSchemaLog4j, log4net&quot; /&gt;
 &lt;/appender&gt;</pre>
+<<<<<<< HEAD
+    </li>
+    <li>
+        In your code, use your unique application ID. This can be anything you wish, but must match the URL you use on this site.<br />
+        <pre>log4net.GlobalContext.Properties["ApplicationId"] = "@ViewBag.NewGuid";</pre>
+    </li>
+    <li>View your log messages in real time on the @Html.ActionLink("here!", "Index", "Apps"). Bookmark that page to save time next time!</li>
+</ol>
+=======
         </li>
         <li>
-        In your code, use your unique application ID. This can be anything you wish, but must match the URL you use on this site.<br />
+            In your code, create a unique ID for your application. Any string will work. GUIDs are fine. Here is one for free!<br />
             <pre>log4net.GlobalContext.Properties["ApplicationId"] = "@ViewBag.NewGuid";</pre>
         </li>
         <li>View your log messages in real time on the @Html.ActionLink("here!", "Index", "Apps"). Bookmark that page to save time next time!</li>
@@ -26,3 +35,4 @@
         </p>
     </ol>
 </div>
+>>>>>>> aaf5a94bb5afb9eb8191d24f40d380962a1f55ec

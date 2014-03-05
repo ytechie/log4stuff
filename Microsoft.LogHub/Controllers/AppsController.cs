@@ -39,6 +39,8 @@ namespace Microsoft.LogHub.Controllers
             }
 
             ViewBag.NewGuid = id;
+            ViewBag.QrCodeUrl = "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=http%3A%2F%2Flog4stuff.com" +
+                    Url.Encode(Url.Action("index", "Apps", new { id = id }));
 
             return View();
         }

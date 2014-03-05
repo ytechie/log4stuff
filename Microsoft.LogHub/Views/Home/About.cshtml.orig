@@ -2,8 +2,8 @@
     ViewBag.Title = "About";
 }
 
-<div class="container body-content">
-    <h2>About</h2>
+<<<<<<< HEAD
+<div class="container">
     <ul>
         <li>No sign-up needed.</li>
         <li>We don't store your log messages.</li>
@@ -11,9 +11,16 @@
         <li>Free for now, always free for your typical application (to be defined later).</li>
         <li>It's really just that simple.</li>
     </ul>
+=======
+<div class="container body-content">
+    <h2>About</h2>
+    <p>
+        The easiest way to view real-time log messages from distributed applications.
+    </p>
     <h2>Privacy Statement</h2>
     <p>
         None of your information is ever stored. We do collect web visit analytics
         as well as store our IIS logs.
     </p>
+>>>>>>> aaf5a94bb5afb9eb8191d24f40d380962a1f55ec
 </div>
