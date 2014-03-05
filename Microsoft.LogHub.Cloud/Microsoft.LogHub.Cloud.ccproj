@@ -60,7 +60,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\mfxlogProduction.azurePubxml" />
+    <PublishProfile Include="Profiles\log4stuffbetaProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
