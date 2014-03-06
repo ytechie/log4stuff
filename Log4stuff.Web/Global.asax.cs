@@ -2,11 +2,17 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Xml;
+using log4net;
+using log4net.Appender;
+using log4net.Config;
+using log4net.Core;
+using log4net.Layout;
 using Log4stuff.Web.App_Start;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
@@ -23,6 +29,7 @@ namespace Log4stuff.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             StartUdpServer();
+            StartLogSimulator();
         }
 
         private async void StartUdpServer()
@@ -81,6 +88,35 @@ namespace Log4stuff.Web
             string jsonText = JsonConvert.SerializeXmlNode(doc);
 
             return jsonText;
+        }
+
+        private static Timer SimulatorTimer;
+
+        private static void StartLogSimulator()
+        {
+            var traceAppender = new TraceAppender { Layout = new PatternLayout() };
+
+            var udpAppender = new UdpAppender
+            {
+                RemoteAddress = IPAddress.Loopback,
+                RemotePort = 8080,
+                Name = "UDPAppender",
+                Encoding = new ASCIIEncoding(),
+                Threshold = Level.Debug,
+                Layout = new XmlLayoutSchemaLog4j()
+            };
+            udpAppender.ActivateOptions();
+
+            BasicConfigurator.Configure(traceAppender, udpAppender);
+
+            var log = LogManager.GetLogger("Simulator");
+            log4net.GlobalContext.Properties["ApplicationId"] = "log4stuff";
+
+            SimulatorTimer = new Timer(state =>
+            {
+                log.Debug("Simulated message");
+            }, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+
         }
     }
 }
