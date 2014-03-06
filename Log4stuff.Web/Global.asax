@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="Log4stuff.Web.MvcApplication" Language="C#" %>

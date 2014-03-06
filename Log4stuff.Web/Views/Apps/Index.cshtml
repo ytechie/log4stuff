@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Real-time Log View";
+}
+
+<div class="container-fluid body-content">
+    <div id="container" style="font-size: 9pt;" ng-app="logView" ng-controller="LogController">
+        <form ng-submit="subscribe()">
+            ApplicationId: <input ng-model="applicationId">
+            <input type="submit" value="Listen">
+        </form>
+
+        <table class="table table-condensed table-hover" id="logTable" style="font-size: 8pt">
+            <thead>
+                <tr>
+                    <td>Filters:</td>
+                    <td><input ng-model="search.level"></td>
+                    <td><input ng-model="search.logger"></td>
+                    <td><input ng-model="search.thread"></td>
+                    <td><input ng-model="search.message"></td>
+                    <td><input ng-model="search.hostName"></td>
+                </tr>
+                <tr>
+                    <td>Timestamp</td>
+                    <td>Level</td>
+                    <td>Logger</td>
+                    <td>Thread</td>
+                    <td>Message</td>
+                    <td>Host Name</td>
+                </tr>
+            </thead>
+            <tbody ng-repeat="log in logMessages | filter:search:'true'">
+                <tr>
+                    <td>{{ log.timestamp | date:'short' }}</td>
+                    <td>{{ log.level }}</td>
+                    <td>{{ log.logger }}</td>
+                    <td>{{ log.thread }}</td>
+                    <td>{{ log.message }}</td>
+                    <td>{{ log.hostName }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.0.2.min.js"> </script>
+    <script src="~/signalr/hubs"> </script>
+    <script>
+        window.applicationId = '@ViewBag.ApplicationId';
+    </script>
+    <script src="~/Content/logview.js"> </script>
+}
