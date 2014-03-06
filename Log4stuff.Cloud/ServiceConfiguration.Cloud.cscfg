@@ -3,7 +3,7 @@
   <Role name="Log4stuff.Web">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=log4stuffbeta;AccountKey=p/mi1+YtqXcUGMbG99/FHoajc3xPKWvIwCj2csl9lWi5aGk50UR+PRTTN8DxveV3QLMG20HPg+h5T5ipY/N6tA==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
