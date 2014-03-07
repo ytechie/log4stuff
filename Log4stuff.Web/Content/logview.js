@@ -9,10 +9,12 @@
         $scope.maxMessages = 1000;
 
         $scope.subscribe = function() {
-            if (!$scope.applicationId) {
+            if (!$window.applicationId) {
                 console.warn("Can't subscribe to an empty applicationId");
                 return;
             }
+
+            $scope.applicationId = $window.applicationId;
 
             var logHub = $.connection.logMessageHub;
 
@@ -54,9 +56,6 @@
             });
         };
 
-        if ($window.applicationId) {
-            $scope.applicationId = $window.applicationId;
-            $scope.subscribe();
-        }
+        $scope.subscribe();
     });
 })();
