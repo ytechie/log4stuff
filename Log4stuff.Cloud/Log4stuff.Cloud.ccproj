@@ -50,9 +50,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\log4stuffbetaProduction.azurePubxml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Log4stuff.Web\Log4stuff.Web.csproj">
       <Name>Log4stuff.Web</Name>
       <Project>{a822740f-199b-44a5-a6e5-20a8f41ed3bb}</Project>
@@ -61,6 +58,9 @@
       <RoleName>Log4stuff.Web</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\log4stuffProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

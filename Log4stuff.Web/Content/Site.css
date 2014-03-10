@@ -56,3 +56,11 @@ body {
     position: absolute;
     width: 100%;
 }
+
+.logTable {
+    border-collapse: collapse;
+}
+
+.logTable tr td {
+    padding-right: 10px;
+}

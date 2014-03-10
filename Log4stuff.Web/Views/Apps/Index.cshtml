@@ -5,7 +5,7 @@
 
 <div class="container-fluid body-content">
     <div id="container" style="font-size: 9pt;" ng-app="logView" ng-controller="LogController">
-        <table class="table table-condensed table-hover" id="logTable" style="font-size: 8pt">
+        <table class="logTable" id="logTable" style="font-size: 8pt; font-family: 'consolas'; ">
             <thead>
                 <tr>
                     <td></td>
@@ -26,7 +26,7 @@
             </thead>
             <tbody ng-repeat="log in logMessages | filter:search:'true'">
                 <tr>
-                    <td>{{ log.timestamp | date:'short' }}</td>
+                    <td>{{ log.timestamp | date:'medium' }}</td>
                     <td>{{ log.level }}</td>
                     <td>{{ log.logger }}</td>
                     <td>{{ log.thread }}</td>
@@ -45,4 +45,6 @@
         window.applicationId = '@ViewBag.ApplicationId';
     </script>
     <script src="~/Content/logview.js"> </script>
+
+    
 }

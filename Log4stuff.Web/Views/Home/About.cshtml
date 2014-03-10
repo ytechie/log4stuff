@@ -16,4 +16,20 @@
         None of your information is ever stored. We do collect web visit analytics
         as well as store our IIS logs.
     </p>
+    
+    <h2>FAQ</h2>
+    
+    <h4>How do I log custom properties?</h4>
+    <p>
+        Log4net supports custom properties, but they are not currently exposed in log4stuff. We are
+        looking for ways to do this. Log4net supports <i>sending</i> custom properties with the following
+        syntax:
+    </p>
+    <code>
+        GlobalContext.Properties["CustomProperty"] = "PropertyValue";
+    </code>
+    
+    @*<h4>How do I log custom properties?</h4>
+    <p>
+    </p>*@
 </div>

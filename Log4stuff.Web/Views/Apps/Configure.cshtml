@@ -16,13 +16,14 @@
 &lt;/appender&gt;</pre>
         </li>
         <li>
-            In your code, use your unique application ID. This can be anything you wish, but must match the URL you use on this site.<br />
+            Somewhere in your application, set your unique application ID. This can be anything you wish.<br />
             <pre>log4net.GlobalContext.Properties["ApplicationId"] = "@ViewBag.NewGuid";</pre>
         </li>
         <li>View your log messages in real time @Html.ActionLink("here!", "Index", "Apps"). Bookmark that page to save time next time!</li>
-        <p>
+        
+        <!--<p>
             Alternatively, scan this QR code to view your logs:<br />
             <img src="@ViewBag.QrCodeUrl" />
-        </p>
+        </p>-->
     </ol>
 </div>

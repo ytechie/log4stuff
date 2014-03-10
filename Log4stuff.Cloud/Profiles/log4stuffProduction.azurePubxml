@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <AzureCredentials>{"ServiceManagementEndpoint":"https:\/\/management.core.windows.net\/","SubscriptionId":"f8286698-df09-4dec-88e2-a5b4d1d475bb"}</AzureCredentials>
+    <AzureCredentials>{"ServiceManagementEndpoint":"https:\/\/management.core.windows.net\/","SubscriptionId":"ee5ff5e4-b202-4791-aee3-8d272963a4e2"}</AzureCredentials>
     <AzureDeleteDeploymentOnFailure>False</AzureDeleteDeploymentOnFailure>
-    <AzureDeploymentLabel>log4stuff</AzureDeploymentLabel>
+    <AzureDeploymentLabel>Log4stuff.Cloud</AzureDeploymentLabel>
     <AzureDeploymentReplacementMethod>AutomaticUpgrade</AzureDeploymentReplacementMethod>
     <AzureSlot>Production</AzureSlot>
     <AzureEnableRemoteDesktop>True</AzureEnableRemoteDesktop>
     <AzureEnableWebDeploy>False</AzureEnableWebDeploy>
     <AzureFallbackToDeleteAndRecreateIfUpgradeFails>False</AzureFallbackToDeleteAndRecreateIfUpgradeFails>
-    <AzureHostedServiceLabel>log4stuffbeta</AzureHostedServiceLabel>
-    <AzureHostedServiceName>log4stuffbeta</AzureHostedServiceName>
+    <AzureHostedServiceLabel>log4stuff</AzureHostedServiceLabel>
+    <AzureHostedServiceName>log4stuff</AzureHostedServiceName>
     <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
     <AzureEnableProfiling>False</AzureEnableProfiling>
     <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
     <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
-    <AzureStorageAccountLabel>log4stuffbeta</AzureStorageAccountLabel>
-    <AzureStorageAccountName>log4stuffbeta</AzureStorageAccountName>
+    <AzureStorageAccountLabel>simpletracking</AzureStorageAccountLabel>
+    <AzureStorageAccountName>simpletracking</AzureStorageAccountName>
     <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
   </PropertyGroup>
 </Project>
