@@ -5,18 +5,20 @@
 <div class="container">
     <img src="/Content/log4stuff.png" style="padding-bottom: 20px; width: 250px;" class="img-responsive center-block" />
     
-    <div class="row" style="padding-bottom: 20px">
+    <div class="row" style="padding-bottom: 0px">
         <div class="col-md-3"></div>
         <div class="col-md-6 text-center">
             <p class="lead">
-                Getting started takes seconds, no sign-up needed. Create an application ID that will identify your application. We've already
-                generated one for you if you want to use it.
+                Getting started takes seconds, no install or sign-up needed.
             </p>
-        </div>
+            <p class="lead">
+                Select an application ID and get your configuration code:
+            </p>
+        </div>  
         <div class="col-md-3"></div>
     </div>
     
-    <div class="row" style="padding-bottom: 40px">
+    <div class="row" style="padding-bottom: 50px">
         <div class="col-md-12 text-center">
             @using (Html.BeginForm("GetTheCode", "Home", FormMethod.Get, new {@class = "form-inline", role = "form"}))
             {
@@ -27,18 +29,16 @@
     </div>
 
     <div class="row" style="padding-bottom: 20px">
+        <div class="col-md-2"></div>
         <div class="col-md-4 text-center" style="padding-bottom: 10px;">
             <img src="/Content/appender-screenshot.jpg" style="max-width: 100%" /><br />
-            Add a UDP Appender to log4net or log4j
-        </div>
-        <div class="col-md-4 text-center" style="padding-bottom: 10px;">
-            <img src="/Content/appender-applicationid.jpg" style="max-width: 100%" /><br />
-            Add 1 line of code to identify your app
+            Add a simple appender to your log configuration
         </div>
         <div class="col-md-4 text-center" style="padding-bottom: 10px;">
             <img src="/Content/log-output.jpg" style="max-width: 100%" /><br />
             View your logs from anywhere, in real time
         </div>
+        <div class="col-md-2"></div>
     </div>
     
     <div class="row">
