@@ -3,27 +3,78 @@
     ViewBag.Title = "Configure";
 }
 
+
+
 <div class="container body-content">
     <h2>Configure</h2>
-    <ol>
-        <li>
-            Add the following appender to your logging configuration:<br />
-            <pre>
-&lt;appender name=&quot;UdpAppender&quot; type=&quot;log4net.Appender.UdpAppender&quot;&gt;
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Option 1 (preferred): Configure Using Our Appender</h3>
+        </div>
+        <div class="panel-body">
+            <ol>
+                <li>
+                    Install the <a href="https://www.nuget.org/packages/Log4stuff.Appender/">Log4stuff.Appender</a> NuGet package.
+                </li>
+                <li>
+                    Configure the logger in your log4net configuration XML as follows:
+                    <pre>
+&lt;appender name=&quot;Log4StuffAppender&quot; type=&quot;Log4stuff.Appender.Log4stuffAppender, Log4stuff.Appender&quot;&gt;
+    &lt;param name=&quot;ApplicationId&quot; value=&quot;@ViewBag.NewGuid&quot; /&gt;
+&lt;/appender&gt;</pre> 
+                </li>
+                <li>
+                    Add the appender to your root logger:
+                    <pre>
+&lt;root&gt;
+    &lt;level value=&quot;DEBUG&quot; /&gt;
+    &lt;appender-ref ref=&quot;Log4StuffAppender&quot; /&gt;
+&lt;/root&gt;</pre>
+                </li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Option 2: Manually Configure a UDP Appender</h3>
+        </div>
+        <div class="panel-body">
+            <ol>
+                <li>
+                    Add the following appender to your logging configuration:<br />
+                    <pre>
+&lt;appender name=&quot;Log4StuffAppender&quot; type=&quot;log4net.Appender.UdpAppender&quot;&gt;
     &lt;param name=&quot;RemoteAddress&quot; value=&quot;@ViewBag.IpAddress&quot; /&gt;
     &lt;param name=&quot;RemotePort&quot; value=&quot;8080&quot; /&gt;
     &lt;layout type=&quot;log4net.Layout.XmlLayoutSchemaLog4j, log4net&quot; /&gt;
 &lt;/appender&gt;</pre>
-        </li>
-        <li>
-            Somewhere in your application, set your unique application ID. This can be anything you wish.<br />
-            <pre>log4net.GlobalContext.Properties["ApplicationId"] = "@ViewBag.NewGuid";</pre>
-        </li>
-        <li>View your log messages in real time @Html.ActionLink("here!", "Index", "Apps"). Bookmark that page to save time next time!</li>
-        
-        <!--<p>
-            Alternatively, scan this QR code to view your logs:<br />
-            <img src="@ViewBag.QrCodeUrl" />
-        </p>-->
-    </ol>
+                </li>
+                <li>
+                    Add the appender to your root logger:
+                    <pre>
+&lt;root&gt;
+    &lt;level value=&quot;DEBUG&quot; /&gt;
+    &lt;appender-ref ref=&quot;Log4StuffAppender&quot; /&gt;
+&lt;/root&gt;</pre>
+                </li>
+                <li>
+                    Somewhere early in your application, set your application ID.<br />
+                    <pre>log4net.GlobalContext.Properties["ApplicationId"] = "@ViewBag.NewGuid";</pre>
+                </li>
+            </ol>
+        </div>
+    </div>
+    
+    <h2>View</h2>
+    <p>
+        View your log messages in real time @Html.ActionLink("here!", "Index", "Apps"). Bookmark that page to save time next time!
+    </p>
+    <p>
+              Alternatively, scan this QR code to view your logs:<br />
+              <img src="@ViewBag.QrCodeUrl" />
+          </p>
+
+
 </div>
