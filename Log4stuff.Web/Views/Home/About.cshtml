@@ -33,6 +33,14 @@
     <p>
         We need a unique way of identifying applications so that your log messages are uniquely identified,
         and there is an easy way of viewing those log messages. Your application ID can be anything you like.
-        GUIDs make good application ID's because they're unique, and hard for someone else to guess.
+        GUIDs make good application ID's because they're unique, and hard for someone else to guess. You can choose
+        something like "foo", but then someone else could guess that ID and watch your log messages.
+    </p>
+    
+    <h4>Doesn't it take a lot of time to send all of the log messages?</h4>
+    <p>
+        Using a standard broadband connection, we've benchmarked over 10,000 messages/second from a single application.
+        The log4stuff website can handle millions of messages per second, and is built on Azure and designed so
+        that we can scale indefinitely.
     </p>
 </div>

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
@@ -48,7 +50,7 @@ namespace Log4stuff.Tests
         {
             var udpAppender = new UdpAppender
             {
-                RemoteAddress = IPAddress.Parse("137.135.86.175"),
+                RemoteAddress = Dns.GetHostAddresses("log4stuff.com").First(),
                 RemotePort = 8080,
                 Name = "UDPAppender",
                 Encoding = new ASCIIEncoding(),
@@ -62,10 +64,14 @@ namespace Log4stuff.Tests
             var log = LogManager.GetLogger("Simulator");
             log4net.GlobalContext.Properties["ApplicationId"] = "902245b6-aec4-4057-bd7f-b78264cf9455";
 
+            var sw = new Stopwatch();
+            sw.Start();
             for (var i = 0; i < 10000; i++)
             {
                 log.DebugFormat("Flood #{0}", i);
             }
+            sw.Stop();
+            Debug.WriteLine("Wrote messages in {0}", sw.ElapsedMilliseconds);
         }
     }
 }
