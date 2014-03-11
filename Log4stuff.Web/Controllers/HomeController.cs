@@ -19,8 +19,13 @@ namespace Log4stuff.Web.Controllers
             return View();
         }
 
-       // [OutputCache(Duration = 600, VaryByParam = "none", Location = OutputCacheLocation.Server)]
+        // [OutputCache(Duration = 600, VaryByParam = "none", Location = OutputCacheLocation.Server)]
         public ActionResult Pricing()
+        {
+            return View();
+        }
+
+        public ActionResult LearnMore()
         {
             return View();
         }
