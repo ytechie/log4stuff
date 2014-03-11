@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4stuff.Tests", "Log4stuf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4stuff.Appender", "Log4stuff.Appender\Log4stuff.Appender.csproj", "{5AE1ECFD-A082-48CB-B485-747C3B12FB68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4stuff.Sample", "Log4stuff.Sample\Log4stuff.Sample.csproj", "{43D1C1F3-0EEA-4CA8-9C05-54D17300D65F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5AE1ECFD-A082-48CB-B485-747C3B12FB68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AE1ECFD-A082-48CB-B485-747C3B12FB68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AE1ECFD-A082-48CB-B485-747C3B12FB68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D1C1F3-0EEA-4CA8-9C05-54D17300D65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D1C1F3-0EEA-4CA8-9C05-54D17300D65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D1C1F3-0EEA-4CA8-9C05-54D17300D65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D1C1F3-0EEA-4CA8-9C05-54D17300D65F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
