@@ -24,13 +24,13 @@
                     <td>Host Name</td>
                 </tr>
             </thead>
-            <tbody ng-repeat="log in logMessages | filter:search:'true'">
-                <tr>
-                    <td>{{ log.timestamp | date:'medium' }}</td>
+            <tbody>
+                <tr ng-repeat ="log in logMessages | filter:search:'true'">
+                    <td>{{ log.timestamp | date:'yyyy-MM-dd h:mm:ss a' }}</td>
                     <td>{{ log.level }}</td>
                     <td>{{ log.logger }}</td>
                     <td>{{ log.thread }}</td>
-                    <td>{{ log.message }}</td>
+                    <td title="{{ log.message }}">{{ log.message | limitTo:90 }}</td>
                     <td>{{ log.hostName }}</td>
                 </tr>
             </tbody>

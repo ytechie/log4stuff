@@ -112,9 +112,23 @@ namespace Log4stuff.Web
             var log = LogManager.GetLogger("Simulator");
             log4net.GlobalContext.Properties["ApplicationId"] = "log4stuff";
 
+            var rand = new Random();
             SimulatorTimer = new Timer(state =>
             {
-                log.Debug("Simulated message");
+                var option = rand.Next(0, 3); //max is exclusive
+                switch (option)
+                {
+                    case 0:
+                        log.Info("This is an info message");
+                        break;
+                    case 1:
+                        log.Debug("This is a really long simulated message that would never fit int a single row. Notice that it's truncated.");
+                        break;
+                    default:
+                        log.Debug("This is a debug message");
+                        break;
+                }
+                
             }, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
 
         }
