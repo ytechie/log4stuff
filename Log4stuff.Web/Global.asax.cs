@@ -122,7 +122,7 @@ namespace Log4stuff.Web
                         log.Info("This is an info message");
                         break;
                     case 1:
-                        log.Debug("This is a really long simulated message that would never fit int a single row. Notice that it's truncated.");
+                        log.Debug("This is a really long message that will be truncated. It would never fit into a single row.");
                         break;
                     default:
                         log.Debug("This is a debug message");

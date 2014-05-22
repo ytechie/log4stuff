@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using log4net;
 using log4net.Appender;
+using log4net.Config;
 using log4net.Layout;
 
 namespace Log4stuff.Appender
@@ -27,6 +30,24 @@ namespace Log4stuff.Appender
             Log.DebugFormat("Now logging to {0}", logUrl);
 
             base.ActivateOptions();
+        }
+
+        public static void AutoConfigureLogging(string applicationId, bool listenToTrace = true)
+        {
+            var udpAppender = new UdpAppender
+            {
+                RemoteAddress = Dns.GetHostAddresses("log4stuff.com").First(),
+                RemotePort = 8080,
+                Layout = new XmlLayoutSchemaLog4j()
+            };
+            udpAppender.ActivateOptions();
+            BasicConfigurator.Configure(udpAppender);
+            log4net.GlobalContext.Properties["ApplicationId"] = applicationId;
+
+            if (listenToTrace)
+            {
+                Trace.Listeners.Add(new Log4NetTraceListener());
+            }
         }
     }
 }
