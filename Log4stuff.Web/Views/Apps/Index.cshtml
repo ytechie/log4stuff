@@ -8,20 +8,20 @@
         <table class="logTable" id="logTable" style="font-size: 8pt; font-family: 'consolas'; ">
             <thead>
                 <tr>
-                    <td></td>
-                    <td><input ng-model="search.level" placeholder="Level Filter"></td>
-                    <td><input ng-model="search.logger" placeholder="Logger Filter"></td>
-                    <td><input ng-model="search.thread" placeholder="Thread Filter"></td>
-                    <td><input ng-model="search.message" placeholder="Message Filter"></td>
-                    <td><input ng-model="search.hostName" placeholder="Host Name Filter"></td>
+                    <th></th>
+                    <th><input ng-model="search.level" placeholder="Level Filter"></th>
+                    <th><input ng-model="search.logger" placeholder="Logger Filter"></th>
+                    <th><input ng-model="search.thread" placeholder="Thread Filter"></th>
+                    <th><input ng-model="search.message" placeholder="Message Filter"></th>
+                    <th><input ng-model="search.hostName" placeholder="Host Name Filter"></th>
                 </tr>
                 <tr>
-                    <td>Timestamp</td>
-                    <td>Level</td>
-                    <td>Logger</td>
-                    <td>Thread</td>
-                    <td>Message</td>
-                    <td>Host Name</td>
+                    <th>Timestamp</th>
+                    <th>Level</th>
+                    <th>Logger</th>
+                    <th>Thread</th>
+                    <th>Message</th>
+                    <th>Host Name</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +44,8 @@
     <script>
         window.applicationId = '@ViewBag.ApplicationId';
     </script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <link href="http://code.jquery.com/ui/jquery-ui-git.css" rel="stylesheet" />
     <script src="~/Content/logview.js"> </script>
 
     

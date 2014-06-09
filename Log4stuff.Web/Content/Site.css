@@ -65,6 +65,12 @@ body {
     padding-right: 20px;
 }
 
+.logTable td, .logTable th {
+    border: 1px solid black;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 .logTable tbody tr:nth-child(even) td, .logTable tbody tr.even td {
   background-color: #EEEEEE;
 }

@@ -13,6 +13,12 @@
                 console.warn("Can't subscribe to an empty applicationId");
                 return;
             }
+            
+            $("#logTable th").resizable(
+                {
+                    handles: "e"
+                }
+            );
 
             $scope.applicationId = $window.applicationId;
 
