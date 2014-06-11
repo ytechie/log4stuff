@@ -59,6 +59,8 @@ body {
 
 .logTable {
     border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
 }
 
 .logTable tr td {
@@ -69,6 +71,11 @@ body {
     border: 1px solid black;
     padding-left: 2px;
     padding-right: 2px;
+}
+
+.logTable td {
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .logTable tbody tr:nth-child(even) td, .logTable tbody tr.even td {
