@@ -76,6 +76,7 @@ body {
 .logTable td {
     overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .logTable tbody tr:nth-child(even) td, .logTable tbody tr.even td {
