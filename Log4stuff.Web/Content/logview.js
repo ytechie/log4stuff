@@ -27,22 +27,20 @@
             //Register the application id we're interested in
             $.connection.hub.qs = { 'applicationId': $scope.applicationId };
 
-
             logHub.client.newLogMessage = function(logMessage) {
-                var log = JSON.parse(logMessage).event;
-                var hostName;
-
-                for (var i = 0; i < log.properties.data.length; i++) {
-                    if (log.properties.data[i]['@name'] == 'log4net:HostName') {
-                        hostName = log.properties.data[i]['@value'];
-                    }
+                var log = JSON.parse(logMessage),
+                    hostName = null;
+                
+                if (log.Metadata && log.Metadata) {
+                    hostName = log.Metadata['log4net:HostName'];
                 }
+                
                 $scope.logMessages.push({
-                    timestamp: new Date(),
-                    level: log['@level'],
-                    logger: log['@logger'],
-                    thread: log['@thread'],
-                    message: log.message,
+                    timestamp: log.Timestamp,
+                    level: log.Level,
+                    logger: log.Logger,
+                    thread: log.Thread,
+                    message: log.Message,
                     hostName: hostName
                 });
 

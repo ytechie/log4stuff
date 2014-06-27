@@ -14,6 +14,8 @@ using log4net.Config;
 using log4net.Core;
 using log4net.Layout;
 using Log4stuff.Web.App_Start;
+using Log4stuff.Web.Models;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 
@@ -45,49 +47,19 @@ namespace Log4stuff.Web
 
                 //TODO: Are we still listening for UDP messages at this point?
 
-                byte[] buffer = received.Buffer;
+                var buffer = received.Buffer;
 
-                string xmlText = Encoding.UTF8.GetString(buffer);
-                string json = ConvertLog4JToJson(xmlText);
+                var xmlText = Encoding.UTF8.GetString(buffer);
+                var logEvent = new LogEvent();
+                logEvent.PopulateFromLog4JXml(xmlText);
+
+                var json = logEvent.ToJson();
 
                 //This should be in the hub wrapper
-                string applicationId = GetApplicationId(xmlText);
+                var applicationId = logEvent.ApplicationId;
                 if (applicationId != null)
                     context.Clients.Group(applicationId).newLogMessage(json);
             }
-        }
-
-        public static string GetApplicationId(string xml)
-        {
-            const string Prefix = "<log4j:data name=\"ApplicationId\" value=\"";
-
-            try
-            {
-                int start = xml.IndexOf(Prefix);
-                if (start == -1)
-                    return null;
-                start += Prefix.Length;
-
-                int end = xml.IndexOf('\"', start + 1);
-
-                return xml.Substring(start, end - start);
-            }
-            catch (Exception)
-            {
-                //Just eat exceptions to deal with malformed data
-                return null;
-            }
-        }
-
-        //Xml parsing in .NET sucks, convert it to JSON and let the client process it
-        public static string ConvertLog4JToJson(string xml)
-        {
-            var doc = new XmlDocument();
-            doc.LoadXml(xml.Replace("log4j:", ""));
-
-            string jsonText = JsonConvert.SerializeXmlNode(doc);
-
-            return jsonText;
         }
 
         private static Timer SimulatorTimer;
@@ -128,7 +100,7 @@ namespace Log4stuff.Web
                         log.Debug("This is a debug message");
                         break;
                 }
-                
+
             }, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
 
         }

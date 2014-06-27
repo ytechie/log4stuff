@@ -1,0 +1,11 @@
+﻿<log4j:event logger="Simulator" timestamp="1403796834805" level="DEBUG" thread="7">
+  <log4j:message>This is a really long message that will be truncated. It would never fit into a single row.</log4j:message>
+  <log4j:properties>
+    <log4j:data name="log4net:HostName" value="speedyjr" />
+    <log4j:data name="log4jmachinename" value="speedyjr" />
+    <log4j:data name="ApplicationId" value="log4stuff" />
+    <log4j:data name="log4net:Identity" value="" />
+    <log4j:data name="log4net:UserName" value="SPEEDYJR\Jason" />
+    <log4j:data name="log4japp" value="/LM/W3SVC/10/ROOT-1-130482703312877309" />
+  </log4j:properties>
+</log4j:event>
